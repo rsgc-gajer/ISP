@@ -28,6 +28,7 @@
 		370F99701E65FBC600BC6EAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		370F99731E65FBC600BC6EAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		370F99751E65FBC600BC6EAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		370F997C1E65FDFA00BC6EAB /* Grade_11_Computer_Science_ISP_Proposal_-_Exemplar.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Grade_11_Computer_Science_ISP_Proposal_-_Exemplar.docx"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +61,7 @@
 		370F99621E65FBC600BC6EAB /* Space Invaders Revamped */ = {
 			isa = PBXGroup;
 			children = (
+				370F997C1E65FDFA00BC6EAB /* Grade_11_Computer_Science_ISP_Proposal_-_Exemplar.docx */,
 				370F99631E65FBC600BC6EAB /* AppDelegate.swift */,
 				370F99651E65FBC600BC6EAB /* GameScene.sks */,
 				370F99671E65FBC600BC6EAB /* Actions.sks */,
