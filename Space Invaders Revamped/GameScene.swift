@@ -7,6 +7,7 @@
 import SpriteKit
 
 class GameScene : SKScene {
+    let enemy = SKSpriteNode(imageNamed: "alien ship")
     
     let player = SKSpriteNode(imageNamed: "ship") // Import playermodel image
     
@@ -27,6 +28,24 @@ class GameScene : SKScene {
         player.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.2) // Middle of the screen, up about 1/4 on screen
         self.zPosition = 2 // Will be above the background
         self.addChild(player)
+        
+        // Enemy 
+        enemy.setScale(0.3)
+        enemy.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.9)
+        self.zPosition = 300
+        self.addChild(enemy)
+        
+        // Create enemy movement pattern
+        let moveLeft = SKAction.moveBy(x: -50, y: 0, duration: 1)
+        let moveDown = SKAction.moveBy(x: 0, y: -50, duration: 1)
+        let moveUp = SKAction.moveBy(x: 0, y: 50, duration: 1)
+        let moveRight = SKAction.moveBy(x: 50, y: 0, duration: 1)
+        
+        let enemyMovement = SKAction.sequence([moveLeft, moveDown, moveRight, moveRight, moveDown, moveLeft])
+        
+        let repeatMovement = SKAction.repeatForever(enemyMovement) // Run the action more than once
+        
+        enemy.run(repeatMovement) // Run the enemy movement
     }
     
     // Bullet
