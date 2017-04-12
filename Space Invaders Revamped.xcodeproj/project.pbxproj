@@ -27,6 +27,7 @@
 		370F99751E65FBC600BC6EAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		370F997C1E65FDFA00BC6EAB /* Grade_11_Computer_Science_ISP_Proposal_-_Exemplar.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Grade_11_Computer_Science_ISP_Proposal_-_Exemplar.docx"; sourceTree = SOURCE_ROOT; };
 		37CF5C151E703BC600674282 /* missile_3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = missile_3.wav; path = ../../../../../Downloads/missile_3.wav; sourceTree = "<group>"; };
+		37E719941E9EA8B500960DDF /* Independent_Study_Project_-_Checkpoint_1.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Independent_Study_Project_-_Checkpoint_1.docx"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				370F997C1E65FDFA00BC6EAB /* Grade_11_Computer_Science_ISP_Proposal_-_Exemplar.docx */,
+				37E719941E9EA8B500960DDF /* Independent_Study_Project_-_Checkpoint_1.docx */,
 				370F99631E65FBC600BC6EAB /* AppDelegate.swift */,
 				370F99691E65FBC600BC6EAB /* GameScene.swift */,
 				37CF5C151E703BC600674282 /* missile_3.wav */,
