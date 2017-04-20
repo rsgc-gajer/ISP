@@ -30,16 +30,16 @@ class GameScene : SKScene {
         self.addChild(player)
         
         // Enemy 
-        enemy.setScale(0.3)
-        enemy.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.9)
+        enemy.setScale(0.2)
+        enemy.position = CGPoint(x: self.size.width/2, y: self.size.height)
         self.zPosition = 300
         self.addChild(enemy)
         
         // Create enemy movement pattern
-        let moveLeft = SKAction.moveBy(x: -50, y: 0, duration: 1)
-        let moveDown = SKAction.moveBy(x: 0, y: -50, duration: 1)
-        let moveUp = SKAction.moveBy(x: 0, y: 50, duration: 1)
-        let moveRight = SKAction.moveBy(x: 50, y: 0, duration: 1)
+        let moveLeft = SKAction.moveBy(x: -100, y: 0, duration: 1)
+        let moveDown = SKAction.moveBy(x: 0, y: -100, duration: 1)
+        let moveUP = SKAction.moveBy(x: 0, y: 100, duration: 1)
+        let moveRight = SKAction.moveBy(x: 100, y: 0, duration: 1)
         
         let enemyMovement = SKAction.sequence([moveLeft, moveDown, moveRight, moveRight, moveDown, moveLeft])
         
@@ -48,12 +48,47 @@ class GameScene : SKScene {
         enemy.run(repeatMovement) // Run the enemy movement
     }
     
+    override func update(_ currentTime: TimeInterval) {
+        checkForHits()
+    }
+    
+    
+    func checkForHits() {
+        
+        // Loop through all the nodes that are bullets and find out which onees are intersecting with the aliens
+        for node in self.children {
+            
+            // Getting the name of nodes that have had names assigned
+            if let nodeName = node.name {
+                
+                // Only check for whether bullets are intersecting with the alien
+                if nodeName == "bullet" {
+                    
+                    // See if it is intersecting the bullet
+                    if node.intersects(enemy) {
+                        print("hit")
+                    } else {
+                        print("no hit")
+                    }
+                    
+                }
+                
+            }
+            
+            
+        }
+        
+        
+    }
+    
+    
     // Bullet
     func bulletFired() {
         let bullet = SKSpriteNode(imageNamed: "bullet") // Import the bullet image
         bullet.setScale(0.5)
         bullet.position = CGPoint(x: player.position.x, y: player.position.y + player.size.height/1.6) // Setting the bullet so it stays with the player model
         bullet.zPosition = 1 // Behind playermodel but in front of background
+        bullet.name = "bullet"
         self.addChild(bullet)
         
         // Implement bullet actions
@@ -87,6 +122,9 @@ class GameScene : SKScene {
         let destination = CGPoint(x: touchLocation.x, y: player.position.y) // Make player move horizontally
         let actionMove = SKAction.move(to: destination, duration: 0.1)
         player.run(actionMove) // Run the function
+    }
+    func moveEnemy() {
+        
     }
     
 }
