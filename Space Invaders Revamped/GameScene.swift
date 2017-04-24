@@ -29,11 +29,15 @@ class GameScene : SKScene {
         self.zPosition = 2 // Will be above the background
         self.addChild(player)
         
-        // Enemy 
-        enemy.setScale(0.2)
-        enemy.position = CGPoint(x: self.size.width/2, y: self.size.height)
-        self.zPosition = 300
-        self.addChild(enemy)
+        // Enemy
+        enemy.setScale(0.2) // Set enemy scale
+        let horizontalPosition = CGFloat(arc4random_uniform(UInt32(size.width)))
+        let verticalPosition = size.height + enemy.size.height
+        let startingPosition = CGPoint(x: horizontalPosition, y: verticalPosition)
+        enemy.position = startingPosition
+        self.zPosition = 300 // Will be above the background
+        enemy.name = "enemy" // Name set so node updates every enemy
+        self.addChild(enemy) // Add enemy to scene
         
         // Create enemy movement pattern
         let moveLeft = SKAction.moveBy(x: -100, y: 0, duration: 1)
@@ -46,41 +50,36 @@ class GameScene : SKScene {
         let repeatMovement = SKAction.repeatForever(enemyMovement) // Run the action more than once
         
         enemy.run(repeatMovement) // Run the enemy movement
+        
+        // Spawn multiple enemies
+//        let actionWait = SKAction.wait(forDuration: 2) // Set how long to take for enemies to spawn in
+//        let actionSpawn = SKAction.run() {[weak self] in self?.enemy}
+//        let actionSequence = SKAction.sequence([actionWait, actionSpawn])
+//        let actionObstacleRepeat = SKAction.repeatForever(actionSequence)
+//        run(actionObstacleRepeat)
     }
     
+    // Functiion that updates bullet detection on enemy
     override func update(_ currentTime: TimeInterval) {
         checkForHits()
     }
     
-    
+    // Function that prints hit if the bullet hits the spaceship, runs through every single bullet 60 times a second
     func checkForHits() {
-        
-        // Loop through all the nodes that are bullets and find out which onees are intersecting with the aliens
-        for node in self.children {
-            
-            // Getting the name of nodes that have had names assigned
-            if let nodeName = node.name {
+        for node in self.children { // Loop through all the nodes that are bullets and find out which onees are intersecting with the aliens
+            if let nodeName = node.name { // Getting the name of nodes that have had names assigned
                 
-                // Only check for whether bullets are intersecting with the alien
-                if nodeName == "bullet" {
+                if nodeName == "bullet" { // Only check for whether bullets are intersecting with the alien
                     
-                    // See if it is intersecting the bullet
-                    if node.intersects(enemy) {
+                    if node.intersects(enemy) {    // See if it is intersecting the bullet
                         print("hit")
                     } else {
                         print("no hit")
                     }
-                    
                 }
-                
             }
-            
-            
         }
-        
-        
     }
-    
     
     // Bullet
     func bulletFired() {
@@ -101,11 +100,11 @@ class GameScene : SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { // Touch function for bullet, runs bulletFired func and implements touch force so that when you touch the screen, a bullet will be fired from set position at set speed
         bulletFired()
         
-    // Make the ship move
+        // Make the ship move
         guard let touch = touches.first else { // Fingers are big when we touch device
             return
-    }
-    // Get the location of the first touch
+        }
+        // Get the location of the first touch
         let touchLocation = touch.location(in: self)
         
         movePlayer(touchLocation: touchLocation) // Use the movePlayer method
