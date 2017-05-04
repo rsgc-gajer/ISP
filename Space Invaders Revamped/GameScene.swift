@@ -6,12 +6,29 @@
 
 import SpriteKit
 
-class GameScene : SKScene {
+class GameScene : SKScene, SKPhysicsContactDelegate {
     let enemy = SKSpriteNode(imageNamed: "alien ship")
     
     let player = SKSpriteNode(imageNamed: "ship") // Import playermodel image
     
     let bulletSound = SKAction.playSoundFileNamed("missile_3.wav", waitForCompletion: false)
+    
+    var gameArea: CGRect
+    
+    override init(size: CGSize) {
+        let maxAspectRatio: CGFloat = 16.0/9.0 // Set ratio of box for playable area
+        let playableWidth = size.height / maxAspectRatio // Sets playable width boundries
+        let margin = (size.width - playableWidth) / 2 // Creates 2 smalelr boxes on sides of game
+        gameArea = CGRect(x: margin, y: 0, width: playableWidth, height: size.height) // Create the game area subtracting margin sides
+        
+        super.init(size: size)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+
     
     // This function runs once at the start of the game
     
@@ -27,29 +44,31 @@ class GameScene : SKScene {
         player.setScale(0.3) // Set player scale size
         player.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.2) // Middle of the screen, up about 1/4 on screen
         self.zPosition = 2 // Will be above the background
+        player.physicsBody = SKPhysicsBody(rectangleOf: player.size) // Adds player hitbox
+        player.physicsBody!.affectedByGravity = false // Bool command, player is not affected by gravity
         self.addChild(player)
         
         // Enemy
         enemy.setScale(0.2) // Set enemy scale
-        let horizontalPosition = CGFloat(arc4random_uniform(UInt32(size.width)))
-        let verticalPosition = size.height + enemy.size.height
-        let startingPosition = CGPoint(x: horizontalPosition, y: verticalPosition)
-        enemy.position = startingPosition
+//        let horizontalPosition = CGFloat(arc4random_uniform(UInt32(size.width)))
+//        let verticalPosition = size.height + enemy.size.height
+//        let startingPosition = CGPoint(x: horizontalPosition, y: verticalPosition)
+        enemy.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         self.zPosition = 300 // Will be above the background
         enemy.name = "enemy" // Name set so node updates every enemy
         self.addChild(enemy) // Add enemy to scene
         
         // Create enemy movement pattern
-        let moveLeft = SKAction.moveBy(x: -100, y: 0, duration: 1)
-        let moveDown = SKAction.moveBy(x: 0, y: -100, duration: 1)
-        let moveUP = SKAction.moveBy(x: 0, y: 100, duration: 1)
-        let moveRight = SKAction.moveBy(x: 100, y: 0, duration: 1)
-        
-        let enemyMovement = SKAction.sequence([moveLeft, moveDown, moveRight, moveRight, moveDown, moveLeft])
-        
-        let repeatMovement = SKAction.repeatForever(enemyMovement) // Run the action more than once
-        
-        enemy.run(repeatMovement) // Run the enemy movement
+//        let moveLeft = SKAction.moveBy(x: -100, y: 0, duration: 1)
+//        let moveDown = SKAction.moveBy(x: 0, y: -100, duration: 1)
+//        let moveUP = SKAction.moveBy(x: 0, y: 100, duration: 1)
+//        let moveRight = SKAction.moveBy(x: 100, y: 0, duration: 1)
+//        
+//        let enemyMovement = SKAction.sequence([moveLeft, moveDown, moveRight, moveRight, moveDown, moveLeft])
+//        
+//        let repeatMovement = SKAction.repeatForever(enemyMovement) // Run the action more than once
+//        
+//        enemy.run(repeatMovement) // Run the enemy movement
         
         // Spawn multiple enemies
 //        let actionWait = SKAction.wait(forDuration: 2) // Set how long to take for enemies to spawn in
@@ -121,8 +140,16 @@ class GameScene : SKScene {
         let destination = CGPoint(x: touchLocation.x, y: player.position.y) // Make player move horizontally
         let actionMove = SKAction.move(to: destination, duration: 0.1)
         player.run(actionMove) // Run the function
+        
+        if player.position.x > gameArea.maxX { // Making sure player doesn't leave maxX, stops player when hits border
+            player.position.x = gameArea.maxX
+        }
+        if player.position.x < gameArea.minX { // Making sure player doesn't leave minX, stops player when hits border
+            player.position.x = gameArea.minX
+        }
+        
     }
-    func moveEnemy() {
+    func spawnEnemy() {
         
     }
     
