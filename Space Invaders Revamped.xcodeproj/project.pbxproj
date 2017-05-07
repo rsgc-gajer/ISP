@@ -13,6 +13,8 @@
 		370F996F1E65FBC600BC6EAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 370F996D1E65FBC600BC6EAB /* Main.storyboard */; };
 		370F99711E65FBC600BC6EAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 370F99701E65FBC600BC6EAB /* Assets.xcassets */; };
 		370F99741E65FBC600BC6EAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 370F99721E65FBC600BC6EAB /* LaunchScreen.storyboard */; };
+		3720F1261EBF7E6300852623 /* theBoldFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3720F1251EBF7E6300852623 /* theBoldFont.ttf */; };
+		3720F1281EBF8E2000852623 /* GamoeOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3720F1271EBF8E2000852623 /* GamoeOverScene.swift */; };
 		37CF5C161E703BC600674282 /* missile_3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 37CF5C151E703BC600674282 /* missile_3.wav */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +28,8 @@
 		370F99731E65FBC600BC6EAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		370F99751E65FBC600BC6EAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		370F997C1E65FDFA00BC6EAB /* Grade_11_Computer_Science_ISP_Proposal_-_Exemplar.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Grade_11_Computer_Science_ISP_Proposal_-_Exemplar.docx"; sourceTree = SOURCE_ROOT; };
+		3720F1251EBF7E6300852623 /* theBoldFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = theBoldFont.ttf; sourceTree = "<group>"; };
+		3720F1271EBF8E2000852623 /* GamoeOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamoeOverScene.swift; sourceTree = "<group>"; };
 		37CF5C151E703BC600674282 /* missile_3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = missile_3.wav; path = ../../../../../Downloads/missile_3.wav; sourceTree = "<group>"; };
 		37E719941E9EA8B500960DDF /* Independent_Study_Project_-_Checkpoint_1.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Independent_Study_Project_-_Checkpoint_1.docx"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,7 +68,9 @@
 				37E719941E9EA8B500960DDF /* Independent_Study_Project_-_Checkpoint_1.docx */,
 				370F99631E65FBC600BC6EAB /* AppDelegate.swift */,
 				370F99691E65FBC600BC6EAB /* GameScene.swift */,
+				3720F1271EBF8E2000852623 /* GamoeOverScene.swift */,
 				37CF5C151E703BC600674282 /* missile_3.wav */,
+				3720F1251EBF7E6300852623 /* theBoldFont.ttf */,
 				370F996B1E65FBC600BC6EAB /* GameViewController.swift */,
 				370F996D1E65FBC600BC6EAB /* Main.storyboard */,
 				370F99701E65FBC600BC6EAB /* Assets.xcassets */,
@@ -134,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				370F996F1E65FBC600BC6EAB /* Main.storyboard in Resources */,
+				3720F1261EBF7E6300852623 /* theBoldFont.ttf in Resources */,
 				37CF5C161E703BC600674282 /* missile_3.wav in Resources */,
 				370F99711E65FBC600BC6EAB /* Assets.xcassets in Resources */,
 				370F99741E65FBC600BC6EAB /* LaunchScreen.storyboard in Resources */,
@@ -149,6 +156,7 @@
 			files = (
 				370F996A1E65FBC600BC6EAB /* GameScene.swift in Sources */,
 				370F996C1E65FBC600BC6EAB /* GameViewController.swift in Sources */,
+				3720F1281EBF8E2000852623 /* GamoeOverScene.swift in Sources */,
 				370F99641E65FBC600BC6EAB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
